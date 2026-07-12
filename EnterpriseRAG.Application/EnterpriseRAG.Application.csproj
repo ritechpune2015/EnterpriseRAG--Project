@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Chat\DTO\" />
+    <Folder Include="Chat\Services\" />
+    <Folder Include="Document\Services\" />
+    <Folder Include="Embeddings\DTO\" />
+    <Folder Include="Embeddings\Services\" />
+    <Folder Include="Common\" />
+    <Folder Include="Retrieval\Interfaces\" />
+    <Folder Include="Retrieval\Servoces\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
+    <PackageReference Include="FluentValidation" Version="12.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.3.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EnterpriseRAG.Domain\EnterpriseRAG.Domain.csproj" />
+    <ProjectReference Include="..\EnterpriseRAG.Shared\EnterpriseRAG.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

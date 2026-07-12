@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="EnterpriseRAG.API/EnterpriseRAG.API.csproj" />
+  <Project Path="EnterpriseRAG.Application/EnterpriseRAG.Application.csproj" />
+  <Project Path="EnterpriseRAG.Domain/EnterpriseRAG.Domain.csproj" />
+  <Project Path="EnterpriseRAG.Infrastructure/EnterpriseRAG.Infrastructure.csproj" />
+  <Project Path="EnterpriseRAG.Shared/EnterpriseRAG.Shared.csproj" />
+</Solution>

@@ -7,14 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Chat\DTO\" />
-    <Folder Include="Chat\Services\" />
     <Folder Include="Document\Services\" />
     <Folder Include="Embeddings\DTO\" />
     <Folder Include="Embeddings\Services\" />
     <Folder Include="Common\" />
-    <Folder Include="Retrieval\Interfaces\" />
-    <Folder Include="Retrieval\Servoces\" />
   </ItemGroup>
 
   <ItemGroup>

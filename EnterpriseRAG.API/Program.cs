@@ -1,5 +1,12 @@
-using EnterpriseRAG.Infrastructure.Configuration;
+using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
+using EnterpriseRAG.Application.Chat.Interfaces;
+using EnterpriseRAG.Application.Chat.Services;
+using EnterpriseRAG.Application.Qdrant;
+using EnterpriseRAG.Application.Retrieval.Interfaces;
+using EnterpriseRAG.Application.Retrieval.Servoces;
 using EnterpriseRAG.Infrastructure;
+using EnterpriseRAG.Infrastructure.Configuration;
+using EnterpriseRAG.Infrastructure.LLM;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,8 +28,21 @@ builder.Services.Configure<ChunkOptions>(builder.Configuration.GetSection(ChunkO
 
 //registering all infra services. 
 builder.Services.AddInfrastructure();
+builder.Services.AddScoped<IRetrievalService, RetrievalService>();
+builder.Services.AddHttpClient<ILLMService, OllamaService>(client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration["Ollama:BaseUrl"]);
+    client.Timeout = TimeSpan.FromMinutes(10);
+});
+builder.Services.AddScoped<PromptBuilder>();
+builder.Services.AddScoped<IChatService, ChatService>();
 
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var service = scope.ServiceProvider.GetRequiredService<IQdrantService>();
+    await service.CreateCollectionAsync();
+}
 
 app.UseSwagger();
 app.UseSwaggerUI();

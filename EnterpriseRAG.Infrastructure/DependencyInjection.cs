@@ -21,8 +21,7 @@ namespace EnterpriseRAG.Infrastructure
             services.AddSingleton<IQdrantService,
                 QdrantService>();
 
-            services.AddScoped<IChatService,
-                OllamaService>();
+            
 
             services.AddScoped<IChunkingService, ChunkingService>();
             services.AddScoped<IDocumentService,DocumentService>();
@@ -37,6 +36,9 @@ namespace EnterpriseRAG.Infrastructure
             services.AddScoped<IDocumentReaderFactory,
                 DocumentReaderFactory>();
 
+            services.AddSingleton<IQdrantService, QdrantService>();
+
+          
             return services;
         }
     }

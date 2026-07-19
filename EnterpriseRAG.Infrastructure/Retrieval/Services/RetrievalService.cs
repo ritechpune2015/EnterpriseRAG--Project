@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EnterpriseRAG.Application.Retrieval.Servoces
+namespace EnterpriseRAG.Infrastructure.Retrieval.Services
 {
     public class RetrievalService : IRetrievalService
     {
@@ -17,7 +17,7 @@ namespace EnterpriseRAG.Application.Retrieval.Servoces
             _embeddingService = embeddingService;
             _qdrantService = qdrantService;
         }
-        public async Task<List<SearchResultDto>> SearchAsync(string question, int topK = 5)
+        public async Task<List<SearchResultDTO>> SearchAsync(string question, int topK = 5)
         {
             var embedding = await _embeddingService.GenerateEmbeddingAsync(question);
             return await _qdrantService.SearchAsync(embedding, topK);

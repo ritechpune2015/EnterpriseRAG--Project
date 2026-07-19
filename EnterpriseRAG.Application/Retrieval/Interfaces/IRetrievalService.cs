@@ -7,7 +7,7 @@ namespace EnterpriseRAG.Application.Retrieval.Interfaces
 {
     public interface IRetrievalService
     {
-        Task<List<SearchResultDto>> SearchAsync(string question, int topK = 5);
+        Task<List<SearchResultDTO>> SearchAsync(string question, int topK = 5);
     }
 
 }

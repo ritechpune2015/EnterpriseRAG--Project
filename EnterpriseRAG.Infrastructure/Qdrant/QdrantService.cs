@@ -88,18 +88,18 @@ namespace EnterpriseRAG.Infrastructure.Qdrant
             await _client.UpsertAsync(_options.CollectionName, points);
         }
 
-        public async Task<List<SearchResultDto>> SearchAsync(float[] embedding, int topK)
+        public async Task<List<SearchResultDTO>> SearchAsync(float[] embedding, int topK)
         {
             var response = await _client.QueryAsync(
                     collectionName: _options.CollectionName,
                     query: embedding,
                     limit: (ulong)topK);
 
-            var results = new List<SearchResultDto>();
+            var results = new List<SearchResultDTO>();
 
             foreach (var point in response)
             {
-                results.Add(new SearchResultDto
+                results.Add(new SearchResultDTO
                 {
                     DocumentId = point.Payload["documentId"].StringValue,
                     DocumentName = point.Payload["documentname"].StringValue,

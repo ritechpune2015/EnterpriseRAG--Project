@@ -4,7 +4,7 @@ using System.Text;
 
 namespace EnterpriseRAG.Application.Retrieval.DTO
 {
-    public class SearchResultDto
+    public class SearchResultDTO
     {
         public string DocumentId { get; set; } = "";
         public string DocumentName { get; set; } = "";

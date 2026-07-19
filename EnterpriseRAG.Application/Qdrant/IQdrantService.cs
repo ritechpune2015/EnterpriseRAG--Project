@@ -11,6 +11,6 @@ namespace EnterpriseRAG.Application.Qdrant
         Task CreateCollectionAsync();
         Task IndexChunkAsync(DocumentChunk chunk);
         Task IndexChunksAsync(IEnumerable<DocumentChunk> chunks);
-        Task<List<SearchResultDto>> SearchAsync(float[] embedding, int topK);
+        Task<List<SearchResultDTO>> SearchAsync(float[] embedding, int topK);
     }
 }

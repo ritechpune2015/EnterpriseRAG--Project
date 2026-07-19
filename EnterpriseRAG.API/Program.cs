@@ -1,9 +1,10 @@
 
 using EnterpriseRAG.Application.Chat.Interfaces;
 using EnterpriseRAG.Application.Chat.Services;
+using EnterpriseRAG.Application.Conversations.Interfaces;
+using EnterpriseRAG.Application.Conversations.Services;
 using EnterpriseRAG.Application.Qdrant;
 using EnterpriseRAG.Application.Retrieval.Interfaces;
-using EnterpriseRAG.Application.Retrieval.Servoces;
 using EnterpriseRAG.Infrastructure;
 using EnterpriseRAG.Infrastructure.Configuration;
 using EnterpriseRAG.Infrastructure.LLM;
@@ -27,15 +28,11 @@ builder.Services.Configure<ChunkOptions>(builder.Configuration.GetSection(ChunkO
 
 
 //registering all infra services. 
-builder.Services.AddInfrastructure();
-builder.Services.AddScoped<IRetrievalService, RetrievalService>();
-builder.Services.AddHttpClient<ILLMService, OllamaService>(client =>
-{
-    client.BaseAddress = new Uri(builder.Configuration["Ollama:BaseUrl"]);
-    client.Timeout = TimeSpan.FromMinutes(10);
-});
-builder.Services.AddScoped<PromptBuilder>();
+builder.Services.AddInfrastructure(builder.Configuration);
+
+builder.Services.AddScoped<IPromptBuilder,PromptBuilder>();
 builder.Services.AddScoped<IChatService, ChatService>();
+builder.Services.AddScoped<IConversationService, ConversationService>();
 
 var app = builder.Build();
 using (var scope = app.Services.CreateScope())

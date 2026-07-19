@@ -11,15 +11,13 @@ namespace EnterpriseRAG.Infrastructure.Documents
 {
     public class DocumentService : IDocumentService
     {
-        private readonly IWebHostEnvironment _environment;
         private readonly IDocumentReaderFactory _readerFactory;
         private readonly IChunkingService _chunkingService;
         private readonly IEmbeddingService _embeddingService;
         private readonly IQdrantService _qdrantService;
         public DocumentService(
-            IWebHostEnvironment environment, IDocumentReaderFactory readerFactory, IChunkingService chunkingService,IEmbeddingService embeddingService,IQdrantService qdrantService)
+            IDocumentReaderFactory readerFactory, IChunkingService chunkingService,IEmbeddingService embeddingService,IQdrantService qdrantService)
         {
-            _environment = environment;
             _readerFactory = readerFactory;
             _chunkingService = chunkingService;
             _embeddingService = embeddingService;
@@ -47,7 +45,7 @@ namespace EnterpriseRAG.Infrastructure.Documents
 
             var folder =
                 Path.Combine(
-                    _environment.ContentRootPath,
+                    AppContext.BaseDirectory,
                     "Uploads",
                     "Documents");
 

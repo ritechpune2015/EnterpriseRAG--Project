@@ -1,4 +1,4 @@
-using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
+
 using EnterpriseRAG.Application.Chat.Interfaces;
 using EnterpriseRAG.Application.Chat.Services;
 using EnterpriseRAG.Application.Qdrant;
